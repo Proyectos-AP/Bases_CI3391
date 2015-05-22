@@ -65,7 +65,7 @@ CREATE TABLE CLIENTE(
 	-- Atributos de la tabla: 
 	CEDULA_IDENT	NUMERIC(8,0)	NOT NULL, -- Cedula de los clientes.
 	DIRECCION		VARCHAR(50)		NOT NULL, -- Direccion de los clientes.
-	EMAIL			VARCHAR(20)		NOT NULL  -- Email del cliente.
+	EMAIL			VARCHAR(250)	NOT NULL  -- Email del cliente.
 
 );
 
@@ -194,7 +194,7 @@ CREATE TABLE EMPLEADO(
 	-- Atributos de la tabla: 
 	CEDULA 				NUMERIC(8,0)	NOT NULL, 	-- Cedula del empleado.
 	DIRECCION			VARCHAR(50)		NOT NULL,	-- Direccion de habitacion del empleado.
-	EMAIL				VARCHAR(25)		NOT NULL,	-- Email del empleado.
+	EMAIL				VARCHAR(250)	NOT NULL,	-- Email del empleado.
 	FECHA_INGRESO 		DATE			NOT NULL 	-- Fecha de ingreso del empleado en la empres.
 
 );

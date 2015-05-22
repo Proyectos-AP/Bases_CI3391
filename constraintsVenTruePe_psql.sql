@@ -684,10 +684,10 @@ ALTER TABLE TIENDAREALIZA
 	- R0: El comprador compra productos a la tienda en efectivo o en tarjeta
 		Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (VENTA Y PAGO).
 
-	- R1: La tienda paga a sus proveedores a través de transferencias bancarias.
+	- R1: La tienda paga a sus proveedores a traves de transferencias bancarias.
 		Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (TIENDA_PAGA Y PAGO).
 
-	- R2: Cada vendedor gana una comisión del 5% sobre las ventas logradas.
+	- R2: Cada vendedor gana una comision del 5% sobre las ventas logradas.
 		Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (VENDEDOR Y VENTA).
 
 	- R3: Los productos pedidos por el cliente no pueden existir en el inventario.
@@ -698,17 +698,17 @@ ALTER TABLE TIENDAREALIZA
 	   	Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (PAGO y CAMBIO)
 
 	- R5: En la modalidad trueque, si el cliente cambia su objeto por uno de mayor valor el 
-		cliente le hará un pago a la tienda por la diferencia de montos.
+		cliente le hara un pago a la tienda por la diferencia de montos.
 		Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (PAGO Y CAMBIO)
 
 	- R6: En trueques la mega-tienda solo hace pagos en efectivo a sus clientes.
 		Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (PAGO Y COMPRA)
 
-	- R7: Cuando un producto llega a su nivel mínimo la tienda elabora una orden de compra a la 
+	- R7: Cuando un producto llega a su nivel minimo la tienda elabora una orden de compra a la 
 	  proveedora del producto.
 	  	Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (PRODUCTO Y ORDEN)
 
-	- R8: El número de entregas de un pedido debe coincidir con el número de facturas asociadas al mismo.
+	- R8: El número de entregas de un pedido debe coincidir con el numero de facturas asociadas al mismo.
 	  	Traduccion: No se puede traducir con CONSTRAINTS.
 
 	- R9: El rif de una factura asociada a la entrega de un pedido debe corresponder al rif del proveedor 
@@ -716,8 +716,8 @@ ALTER TABLE TIENDAREALIZA
 	  	Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (FACTURA Y PEDIDO)
  
 	- R10: Si un dependiente asegurado no ha cumplido 18 años entonces el rango etario correspondiente de su 
-	  prima es igual a  menores, si la edad del dependiente esta entre 18 y 25 años entonces su rango etario es jóvenes, 
-	  si la edad está comprendida entre 25 y 60 años entonces su rango etario es adultos y si la edad es mayor 60 años 
+	  prima es igual a  menores, si la edad del dependiente esta entre 18 y 25 años entonces su rango etario es jovenes, 
+	  si la edad esta comprendida entre 25 y 60 años entonces su rango etario es adultos y si la edad es mayor 60 años 
 	  entonces su rango etario es de mayores.
 	  	Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (DEPENDIENTE Y PRIMA)
 
