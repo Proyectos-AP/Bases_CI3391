@@ -549,8 +549,6 @@ ALTER TABLE ORDEN
 ALTER TABLE PAGO
 	ADD CONSTRAINT DOM_OPERACION_POSTIZA_PAGO CHECK (POSTIZA_PAGO > 0),	
 	ADD CONSTRAINT DOM_PAGO_MODO CHECK (MODO IN ('TARJETA','EFECTIVO','TRANSFERENCIA_BANCARIA')),
-	ADD CONSTRAINT DOM_OPERACION_MONTO CHECK (MONTO > 0)
-
 ;
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -678,7 +676,7 @@ ALTER TABLE TIENDAREALIZA
 ;
 
 ------------------------------------------------------------------------------------------------------------------------
---                       	  					RESTRICCIONES EXPLICITAS		                        		  	  --
+--                       	  				RESTRICCIONES EXPLICITAS (ERE)	                            		  	  --
 ------------------------------------------------------------------------------------------------------------------------
 /*
 	- R0: El comprador compra productos a la tienda en efectivo o en tarjeta
@@ -714,17 +712,44 @@ ALTER TABLE TIENDAREALIZA
 	- R9: El rif de una factura asociada a la entrega de un pedido debe corresponder al rif del proveedor 
 	  que despacha la entrega.
 	  	Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (FACTURA Y PEDIDO)
+
+	- R10: Todo dependiente asegurado tiene una prima asociada
+		Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (DEPENDIENTE Y PRIMA)
  
-	- R10: Si un dependiente asegurado no ha cumplido 18 años entonces el rango etario correspondiente de su 
+	- R11: Si un dependiente asegurado no ha cumplido 18 años entonces el rango etario correspondiente de su 
 	  prima es igual a  menores, si la edad del dependiente esta entre 18 y 25 años entonces su rango etario es jovenes, 
 	  si la edad esta comprendida entre 25 y 60 años entonces su rango etario es adultos y si la edad es mayor 60 años 
 	  entonces su rango etario es de mayores.
 	  	Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (DEPENDIENTE Y PRIMA)
-
-	- R11: Todo dependiente asegurado tiene una prima asociada
-		Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (DEPENDIENTE Y PRIMA)
 	
 */
+
+------------------------------------------------------------------------------------------------------------------------
+--                       	  				RESTRICCIONES EXPLICITAS (ERE)	                            		  	  --
+------------------------------------------------------------------------------------------------------------------------
+/*	
+	- R0: No existen dos claves foraneas CAMBIO a RECIBO que sean iguales
+		Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (CAMBIO Y RECIBO)
+ 
+	- R1: No existen dos claves foraneas COMPRA a RECIBO que sean iguales
+		Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (COMPRA Y RECIBO)
+	
+	- R2: No existen dos claves foraneas VENTA a FACTURA que sean iguales.
+		Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla (VENTA Y FACTURA)
+
+	- R3: Ninguna subclase de OPERACION puede tener la misma clave foranea.
+		Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla
+
+	- R4: Ninguna subclase de EJEMPLAR puede tener la misma clave foranea.
+		Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla
+
+	- R5: Ninguna subclase de EMPLEADO puede tener la misma clave foranea.
+		Traduccion: No se puede traducir con CONSTRAINTS. Involucra mas de una tabla
+
+*/
+
+
+
 ------------------------------------------------------------------------------------------------------------------------
 --                       	  			FIN DE LA DEFINICION DE RESTRICCIONES                        			  	  --
 ------------------------------------------------------------------------------------------------------------------------
