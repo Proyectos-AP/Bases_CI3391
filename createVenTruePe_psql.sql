@@ -78,7 +78,7 @@ CREATE TABLE NOMBRESCLIENTE(
 	*/
 
 	-- Atributos de la tabla: 
-	CEDULA_CLIENTE 	NUMERIC(8,0) NOT NULL,  -- Cedula del cliente.
+	CEDULA_CLIENTE 	NUMERIC(8,0) NOT NULL   -- Cedula del cliente.
 	NOMBRE 			VARCHAR(20)				-- Nombre del cliente.
 );
 
@@ -91,7 +91,7 @@ CREATE TABLE APELLIDOSCLIENTE(
 	*/
 
 	-- Atributos de la tabla: 
-	CEDULA_CLIENTE  NUMERIC(8,0) NOT NULL,  -- Cedula del cliente.
+	CEDULA_CLIENTE  NUMERIC(8,0) NOT NULL   -- Cedula del cliente.
 	APELLIDO 		VARCHAR(20) 			-- Apellidos del cliente.
 );
 
@@ -140,7 +140,7 @@ CREATE TABLE DEPENDIENTE(
 	EDAD 					NUMERIC(3,0) 	NOT NULL, 	-- Edad del dependiente.
 	MONTO_PRIMA 			NUMERIC(6,2) 	NOT NULL,	-- Monto de la prima correspondiente al dependiente
 	
-	RANGO_ETARIO_PRIMA 		VARCHAR(20) 	NOT NULL, 	-- Rango etario del dependiente(clasificacion 
+	RANGO_ETARIO_PRIMA 		VARCHAR(20) 	NOT NULL 	-- Rango etario del dependiente(clasificacion 
 														-- en el monto de la prima).
 
 );
@@ -251,7 +251,7 @@ CREATE TABLE FACTURA(
 
 	-- Atributos de la tabla: 
 	ID_NUMERO_FACTURA	NUMERIC(6,0) 	NOT NULL,	-- Numero de la factura
-	ID_RIF_EMPRESA		VARCHAR(12)		NOT NULL,	-- Rif de la empresa que emite la factura
+	ID_RIF_EMPRESA		VARCHAR(12)		NOT NULL	-- Rif de la empresa que emite la factura
 	NUM_TARJETA			NUMERIC(16,0)			    -- Numero de la tarjeta 
 													-- (en caso que de pague con tarjeta).
 	CLAVE_CONF			NUMERIC(6,0)				-- Clave de confirmacion de la tarjet
@@ -418,7 +418,7 @@ CREATE TABLE RECIBO (
 	*/
 
 	-- Atributos de la tabla: 
-	NUM_RECIBO 		NUMERIC(6,0)	NOT NULL,	-- Numero del recibo.
+	NUM_RECIBO 		NUMERIC(6,0)	NOT NULL	-- Numero del recibo.
 	NUM_TARJETA		NUMERIC(16,0)				-- Numero de la tarjet de un cliente
 												-- en caso que se pague con tarjeta.
 												
