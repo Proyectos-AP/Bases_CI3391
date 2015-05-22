@@ -25,8 +25,9 @@ CREATE TABLE CAMBIO(
 	*/
 
 	-- Atributos de la tabla: 
-	NUM_OPERACION 		NUMERIC(6,0) NOT NULL, -- 
-	NUM_RECIBO  		NUMERIC(6,0) NOT NULL  -- 
+	NUM_OPERACION 		NUMERIC(6,0) NOT NULL, -- Numero de operacion del cambio
+	NUM_RECIBO  		NUMERIC(6,0) NOT NULL  -- Numero del recibo 
+											   --  correspondiente al cambio
 
 );
 
@@ -38,8 +39,8 @@ CREATE TABLE CARGO(
 	*/
 
 	-- Atributos de la tabla: 
-	NOMBRE 			VARCHAR(13) 	NOT NULL,  -- SE PUEDE DECIR QUE SON 13 POR EL CARGO DE SECRETARIA
-	SUELDO 			NUMERIC(8,2) 	NOT NULL   -- explicar la precision
+	NOMBRE 			VARCHAR(13) 	NOT NULL,  -- Nombre de la cargo
+	SUELDO 			NUMERIC(8,2) 	NOT NULL   -- Sueldo base
 );
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -50,8 +51,8 @@ CREATE TABLE CATEGORIA(
 	*/
 
 	-- Atributos de la tabla: 
-	NUMERO 			VARCHAR(2) 		NOT NULL,   --
-	SUELDO_BASE		NUMERIC(8,2) 	NOT NULL 	-- REAL POSITIVO
+	NUMERO 			VARCHAR(1) 		NOT NULL,   -- Numero de categoria de los vendedores.
+	SUELDO_BASE		NUMERIC(8,2) 	NOT NULL 	-- Sueldo base de cada cargo.
 );
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -62,9 +63,9 @@ CREATE TABLE CLIENTE(
 	*/
 
 	-- Atributos de la tabla: 
-	CEDULA 			NUMERIC(8,0)	NOT NULL, --
-	DIRECCION		VARCHAR(50)		NOT NULL, --
-	EMAIL			VARCHAR(20)		NOT NULL  -- revisar si hay tipo para email
+	CEDULA 			NUMERIC(8,0)	NOT NULL, -- Cedula de los clientes.
+	DIRECCION		VARCHAR(50)		NOT NULL, -- Direccion de los clientes.
+	EMAIL			VARCHAR(20)		NOT NULL  -- Email del cliente.
 
 );
 
@@ -74,12 +75,11 @@ CREATE TABLE NOMBRESCLIENTE(
 	/* Descripcion de la tabla: 
 		- Nombre de un cliente.
 		- Atributo MULTIVALUADO de CLIENTE.
-
 	*/
 
 	-- Atributos de la tabla: 
-	CEDULA_CLIENTE 	NUMERIC(8,0) NOT NULL,  --
-	NOMBRE 			VARCHAR(20)				--
+	CEDULA_CLIENTE 	NUMERIC(8,0) NOT NULL,  -- Cedula del cliente.
+	NOMBRE 			VARCHAR(20)				-- Nombre del cliente.
 );
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -88,12 +88,11 @@ CREATE TABLE APELLIDOSCLIENTE(
 	/* Descripcion de la tabla: 
 		- Apellido de un cliente.
 		- Atributo MULTIVALUADO de CLIENTE.
-
 	*/
 
 	-- Atributos de la tabla: 
-	CEDULA_CLIENTE  NUMERIC(8,0) NOT NULL,  --
-	APELLIDO 		VARCHAR(20) 			--
+	CEDULA_CLIENTE  NUMERIC(8,0) NOT NULL,  -- Cedula del cliente.
+	APELLIDO 		VARCHAR(20) 			-- Apellidos del cliente.
 );
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -105,8 +104,8 @@ CREATE TABLE TELEFONOSCLIENTE(
 	*/
 
 	-- Atributos de la tabla: 
-	CEDULA_CLIENTE  NUMERIC(8,0)  NOT NULL, --
-	TELEFONO		NUMERIC(11,0) NOT NULL  --
+	CEDULA_CLIENTE  NUMERIC(8,0)  NOT NULL, -- Cedula del cliente.
+	TELEFONO		NUMERIC(11,0) NOT NULL  -- Telefonos del cliente.
 );
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -118,8 +117,8 @@ CREATE TABLE COMPRA(
 	*/
 
 	-- Atributos de la tabla: 
-	NUM_OPERACION  NUMERIC(6,0) NOT NULL, --
-	NUM_RECIBO 	   NUMERIC(6,0) NOT NULL  --
+	NUM_OPERACION  NUMERIC(6,0) NOT NULL, -- Numero de operacion de la compra.
+	NUM_RECIBO 	   NUMERIC(6,0) NOT NULL  -- Numero de recibo correspondiente a la compra.
 
 );
 
@@ -131,15 +130,18 @@ CREATE TABLE DEPENDIENTE(
 	*/
 
 	-- Atributos de la tabla: 
-	POSTIZA_DEPENDIENTE	 	NUMERIC(8,0) 	NOT NULL, 	--
-	CEDULA  				NUMERIC(8,0), 			  	--
-	ASEGURADO 				BOOL 			NOT NULL, 	--
-	PARENTESCO 				VARCHAR 		NOT NULL, 	--
-	SEXO					CHAR 			NOT NULL, 	-- INDICAR RESTRICCION EXPLICITA EL SEXO 
-	EDAD 					NUMERIC(3,0) 	NOT NULL, 	--
-	MONTO_PRIMA 			NUMERIC(6,2) 	NOT NULL,	--
-	RANGO_ETARIO_PRIMA 		VARCHAR(20) 	NOT NULL, 	--
-	SEXO_PRIMA				CHAR			NOT NULL,	--
+	POSTIZA_DEPENDIENTE	 	NUMERIC(8,0) 	NOT NULL, 	-- Clave postiza de los dependientes.
+	CEDULA  				NUMERIC(8,0), 			  	-- Cedula de los dependientes.
+	ASEGURADO 				BOOL 			NOT NULL, 	-- True si el dependiente esta asegurado y 
+														--  False si no lo esta.
+														
+	PARENTESCO 				VARCHAR(10) 	NOT NULL, 	-- Prenteso con el empleado de la empresa.
+	SEXO					CHAR 			NOT NULL, 	-- Sexo del dependiente.
+	EDAD 					NUMERIC(3,0) 	NOT NULL, 	-- Edad del dependiente.
+	MONTO_PRIMA 			NUMERIC(6,2) 	NOT NULL,	-- Monto de la prima correspondiente al dependiente
+	
+	RANGO_ETARIO_PRIMA 		VARCHAR(20) 	NOT NULL, 	-- Rango etario del dependiente(clasificacion 
+														-- en el monto de la prima).
 
 );
 
@@ -152,8 +154,8 @@ CREATE TABLE NOMBRESDEPENDIENTE(
 	*/
 
 	-- Atributos de la tabla: 
-	POSTIZA_DEPENDIENTE 	NUMERIC(8,0)	NOT NULL, -- (COMO SE ORDENAN LOS NOMBRES?)
-	NOMBRE 					VARCHAR(20)		NOT NULL  --
+	POSTIZA_DEPENDIENTE 	NUMERIC(8,0)	NOT NULL, -- Clave postiza del depeniente (clave foranea).
+	NOMBRE 					VARCHAR(20)		NOT NULL  -- Nombre del dependiente.
 
 );
 
@@ -166,8 +168,8 @@ CREATE TABLE APELLIDOSDEPENDIENTE(
 	*/
 
 	-- Atributos de la tabla: 
-	POSTIZA_DEPENDIENTE 	NUMERIC(8,0)	NOT NULL, -- es foranea
-	APELLIDO 				VARCHAR(20)		NOT NULL  --
+	POSTIZA_DEPENDIENTE 	NUMERIC(8,0)	NOT NULL, -- Clave postiza del depeniente (clave foranea).
+	APELLIDO 				VARCHAR(20)		NOT NULL  -- Apellido del dependiente.
 );
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -178,8 +180,8 @@ CREATE TABLE EJEMPLAR(
 	*/
 
 	-- Atributos de la tabla: 
-	NUM_INVENTARIO 			NUMERIC(6,0)	NOT NULL, --
-	PRECIO_LISTA			NUMERIC(8,2)	NOT NULL  --
+	NUM_INVENTARIO 			NUMERIC(6,0)	NOT NULL, -- Numero de inventario del ejemplar.
+	PRECIO_LISTA			NUMERIC(8,2)	NOT NULL  -- Precio del ejemplar.
 );
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -190,10 +192,10 @@ CREATE TABLE EMPLEADO(
 	*/
 
 	-- Atributos de la tabla: 
-	CEDULA 				NUMERIC(8,0)	NOT NULL, 	-- ESPECIFICAR PORQUE 8 
-	DIRECCION			VARCHAR			NOT NULL,	--
-	EMAIL				VARCHAR			NOT NULL,	--
-	FECHA_INGRESO 		DATE			NOT NULL 	-- SE PODRIA VERIFICAR ALGO DE FECHA?
+	CEDULA 				NUMERIC(8,0)	NOT NULL, 	-- Cedula del empleado.
+	DIRECCION			VARCHAR(50)		NOT NULL,	-- Direccion de habitacion del empleado.
+	EMAIL				VARCHAR(25)		NOT NULL,	-- Email del empleado.
+	FECHA_INGRESO 		DATE			NOT NULL 	-- Fecha de ingreso del empleado en la empres.
 
 );
 
@@ -206,8 +208,8 @@ CREATE TABLE NOMBRESEMPLEADO(
 	*/
 
 	-- Atributos de la tabla: 
-	CEDULA_EMPLEADO  	NUMERIC(8,0) 	NOT NULL, 	--
-	NOMBRE 	 			VARCHAR(20)		NOT NULL	--
+	CEDULA_EMPLEADO  	NUMERIC(8,0) 	NOT NULL, 	-- Cedula del empleado (clave foranea).
+	NOMBRE 	 			VARCHAR(20)		NOT NULL	-- Nombre del empleado.
 );
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -219,8 +221,8 @@ CREATE TABLE APELLIDOSEMPLEADO(
 	*/
 
 	-- Atributos de la tabla: 
-	CEDULA_EMPLEADO 	NUMERIC(8,0)	NOT NULL,	--
-	APELLIDO 			VARCHAR(20)		NOT NULL	--
+	CEDULA_EMPLEADO 	NUMERIC(8,0)	NOT NULL,	--Cedula del empleado (clave foranea).
+	APELLIDO 			VARCHAR(20)		NOT NULL	-- Apellido del empleado
 
 );
 
@@ -234,8 +236,8 @@ CREATE TABLE TELEFONOSEMPLEADOS(
 	*/
 
 	-- Atributos de la tabla: 
-	CEDULA_EMPLEADO 	NUMERIC(8,0)  NOT NULL,	--
-	TELEFONO 			NUMERIC(11,0) NOT NULL	--
+	CEDULA_EMPLEADO 	NUMERIC(8,0)  NOT NULL,	--Cedula del empleado (clave foranea).
+	TELEFONO 			NUMERIC(11,0) NOT NULL	-- Telefono del empleado.
 
 );
 
@@ -248,10 +250,12 @@ CREATE TABLE FACTURA(
 	*/
 
 	-- Atributos de la tabla: 
-	ID_NUMERO_FACTURA	NUMERIC(6,0) 	NOT NULL,	--
-	ID_RIF_EMPRESA		VARCHAR(12)		NOT NULL,	--
-	NUM_TARJETA			NUMERIC(16,0)	NOT NULL,	--
-	CLAVE_CONF			NUMERIC(6,0)	NOT NULL	--
+	ID_NUMERO_FACTURA	NUMERIC(6,0) 	NOT NULL,	-- Numero de la factura
+	ID_RIF_EMPRESA		VARCHAR(12)		NOT NULL,	-- Rif de la empresa que emite la factura
+	NUM_TARJETA			NUMERIC(16,0)			    -- Numero de la tarjeta 
+													-- (en caso que de pague con tarjeta).
+	CLAVE_CONF			NUMERIC(6,0)				-- Clave de confirmacion de la tarjet
+													-- (en caso que de pague con tarjeta).
 );
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -263,11 +267,11 @@ CREATE TABLE OPERACION(
 	*/
 
 	-- Atributos de la tabla: 
-	NUM_OPERACION		NUMERIC(6,0)		NOT NULL,	--
-	FECHA 				DATE				NOT NULL,	--
-	CI_VENDEDOR 		NUMERIC(8,0)  		NOT NULL,	--
-	POSTIZA_PAGO 		NUMERIC(6,0)		NOT NULL, 	-- (ARREGLAR NOMBRE EN EL LIBRE OFFFICE)
-	CI_CLIENTE 			NUMERIC(8,0)  		NOT NULL	--
+	NUM_OPERACION		NUMERIC(6,0)		NOT NULL,	-- Numero de la operacion.
+	FECHA 				DATE				NOT NULL,	-- Fecha cuanto se relizo la operacion.
+	CI_VENDEDOR 		NUMERIC(8,0)  		NOT NULL,	-- Ci del vendedor (clave foranea).
+	POSTIZA_PAGO 		NUMERIC(6,0)		NOT NULL, 	-- Clave postiza de pago (clave foranea).
+	CI_CLIENTE 			NUMERIC(8,0)  		NOT NULL	-- Ci del cliente.
 );
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -279,12 +283,12 @@ CREATE TABLE ORDEN(
 	*/
 
 	-- Atributos de la tabla: 
-	NUMERO 				NUMERIC(6,0)		NOT NULL,	--
-	MONTO_TOTAL			NUMERIC(11,2)		NOT NULL,	--
-	FECHA 				DATE				NOT NULL,	--
-	DESCRIPCION 		VARCHAR(200)		NOT NULL,	-- es tipo texto
-	CANTIDAD_TOTAL 		NUMERIC 			NOT NULL,	--
-	RIF_PROVEEDOR  		VARCHAR(12)			NOT NULL	--
+	NUMERO 				NUMERIC(6,0)		NOT NULL,	-- Numero de la orden.
+	MONTO_TOTAL			NUMERIC(11,2)		NOT NULL,	-- Monto total de la orden.
+	FECHA 				DATE				NOT NULL,	-- Fecha de emision de la orden.
+	DESCRIPCION 		TEXT				NOT NULL,	-- Descripcion de la orden
+	CANTIDAD_TOTAL 		NUMERIC(6,0) 		NOT NULL,	-- Cantidad de elementos pedidos en la orden.
+	RIF_PROVEEDOR  		VARCHAR(12)			NOT NULL	-- Rif del proveedo al que se le pedira la orden.
 
 
 );
@@ -297,9 +301,9 @@ CREATE TABLE PAGO(
 	*/
 
 	-- Atributos de la tabla: 
-	POSTIZA_PAGO 		NUMERIC(6,0) 	NOT NULL,	--
-	MODO 				VARCHAR(22)		NOT NULL,	--
-	MONTO 				NUMERIC(8,2)	NOT NULL	--
+	POSTIZA_PAGO 		NUMERIC(6,0) 	NOT NULL,	-- Clave postiza de pago.
+	MODO 				VARCHAR(22)		NOT NULL,	-- Modo de pago.
+	MONTO 				NUMERIC(8,2)	NOT NULL	-- Monto a pagar.
 );
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -311,9 +315,9 @@ CREATE TABLE PEDIDO(
 	*/
 
 	-- Atributos de la tabla: 
-	NUM_PEDIDO			NUMERIC(6,0)		NOT NULL,	--
-	NUM_ENTREGA			NUMERIC(6,0)		NOT NULL,	--
-	RIF_PROVEEDOR  		VARCHAR(12)			NOT NULL	--
+	NUM_PEDIDO			NUMERIC(6,0)		NOT NULL,	-- Numero del pedido.
+	NUM_ENTREGA			NUMERIC(6,0)		NOT NULL,	-- Numero de entregas en el que se repartira el pedido.
+	RIF_PROVEEDOR  		VARCHAR(12)			NOT NULL	-- Rif del proveedor que despachara el pedido.
 
 );
 
@@ -326,8 +330,8 @@ CREATE TABLE PERSONALADMINISTRATIVO(
 	*/
 
 	-- Atributos de la tabla: 
-	CI_EMPLEADO  	NUMERIC(8,0)  	NOT NULL,	--
-	NOMBRE_CARGO  	VARCHAR(13)		NOT NULL	--
+	CI_EMPLEADO  	NUMERIC(8,0)  	NOT NULL,	-- Ci del empleado.
+	NOMBRE_CARGO  	VARCHAR(13)		NOT NULL	-- Cargo del empleado.
 
 );
 
@@ -340,9 +344,10 @@ CREATE TABLE PRIMA(
 	*/
 
 	-- Atributos de la tabla: 
-	MONTO 			NUMERIC(7,0) 	NOT NULL,	--
-	RANGO_ETARIO 	VARCHAR(20) 	NOT NULL,	-- hace falta agregar las cosas de dominio
-	SEXO			CHAR			NOT NULL	--
+	MONTO 			NUMERIC(7,0) 	NOT NULL,	-- Monto de la prima
+	RANGO_ETARIO 	VARCHAR(20) 	NOT NULL,	-- Rnago etario a clasificar
+	SEXO			CHAR			NOT NULL	-- Parametro que funciona para 
+												-- clasificar el monto de la prima.
 
 );
 
@@ -354,12 +359,13 @@ CREATE TABLE PRODUCTO(
 	*/
 
 	-- Atributos de la tabla: 
-	MARCA 					VARCHAR(20) 		NOT NULL,	--
-	MODELO 					VARCHAR(20)			NOT NULL,	--
-	CATEGORIA 				VARCHAR(20)			NOT NULL,	--
-	ANHO_ELABORACION 		NUMERIC(4,0)		NOT NULL,	--
-	NUM_EXISTENCIA 			NUMERIC(6,0)		NOT NULL,	--
-	NIVEL_MINIMO			NUMERIC(6,0)		NOT NULL	--
+	MARCA 					VARCHAR(20) 		NOT NULL,	-- Marca del produto.
+	MODELO 					VARCHAR(20)			NOT NULL,	-- Modelos del producto.
+	CATEGORIA 				VARCHAR(20)			NOT NULL,	-- Categoria del produto.
+	ANHO_ELABORACION 		NUMERIC(4,0)		NOT NULL,	-- Anio de elaboracion del producto.
+	NUM_EXISTENCIA 			NUMERIC(6,0)		NOT NULL,	-- Numero de existencia del producto.
+	NIVEL_MINIMO			NUMERIC(6,0)		NOT NULL	-- Nivel minimo al que puede llegar
+															-- el numero de elementos de un producto.
 
 );
 
@@ -372,7 +378,8 @@ CREATE TABLE PRODUCTONUEVO(
 	*/
 
 	-- Atributos de la tabla: 
-	NUM_INVENTARIO  		NUMERIC(6,0) NOT NULL	--
+	NUM_INVENTARIO  		NUMERIC(6,0) NOT NULL	-- Numero de inventario de un 
+													-- producto nuevo
 
 );
 
@@ -385,7 +392,8 @@ CREATE TABLE PRODUCTOUSADO(
 	*/
 
 	-- Atributos de la tabla: 
-	NUM_INVENTARIO  		NUMERIC(6,0) NOT NULL	--
+	NUM_INVENTARIO  		NUMERIC(6,0) NOT NULL	-- Numero de inventario de un 
+													-- producto nuevo
 
 );
 
@@ -397,7 +405,7 @@ CREATE TABLE PROVEEDOR(
 	*/
 
 	-- Atributos de la tabla: 
-	RIF VARCHAR(12) NOT NULL	--
+	RIF VARCHAR(12) NOT NULL	-- Rif del proveedor.
 
 );
 
@@ -410,10 +418,13 @@ CREATE TABLE RECIBO (
 	*/
 
 	-- Atributos de la tabla: 
-	NUM_RECIBO 		NUMERIC(6,0)	NOT NULL,	--
-	NUM_TARJETA		NUMERIC(16,0)	NOT NULL,	--
-	CLAVE_CONF 		NUMERIC(6,0)	NOT NULL	--
-
+	NUM_RECIBO 		NUMERIC(6,0)	NOT NULL,	-- Numero del recibo.
+	NUM_TARJETA		NUMERIC(16,0)				-- Numero de la tarjet de un cliente
+												-- en caso que se pague con tarjeta.
+												
+	CLAVE_CONF 		NUMERIC(6,0)				-- Clave de confirmacion de la operacion
+												-- realizada con la tarjeta.
+	
 );
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -425,7 +436,7 @@ CREATE TABLE REMUNERACIONSABADO(
 	*/
 
 	-- Atributos de la tabla: 
-	MONTO 			NUMERIC(6,2)	NOT NULL	--
+	MONTO 			NUMERIC(6,2)	NOT NULL	--Monto de la remuneracion de los sabados.
 
 );
 
@@ -438,11 +449,11 @@ CREATE TABLE VENDEDOR(
 	*/
 
 	-- Atributos de la tabla: 
-	CI_VENDEDOR 		 NUMERIC(8,0) 	NOT NULL,	-- ARREGLAR EN EL LIBREOFFICE ESTO ES FORANEO 
-	COMISION			 NUMERIC(6,2)	NOT NULL,	--
-	TURNO				 VARCHAR(20) 	NOT NULL,	--
-	NUM_SABADO			 INT 			NOT NULL,	--
-	NOMBRE_CATEGORIA 	 VARCHAR(20)	NOT NULL	--REVISAR COMO ES QUE SE LLAMA LA FORANEA  -- es foranea
+	CI_VENDEDOR 		 NUMERIC(8,0) 	NOT NULL,	-- Ci del vendedor.
+	COMISION			 NUMERIC(6,2)	NOT NULL,	-- Comision ganada por el vendedor.
+	TURNO				 VARCHAR(20) 	NOT NULL,	-- Turno del vendedor.
+	NUM_SABADO			 INT 			NOT NULL,	-- Numero de sabados tranajados por el vendedor.
+	NUMERO_CATEGORIA 	 VARCHAR(1) 	NOT NULL	-- Numero de categoria del vendedor.
 
 
 );
@@ -456,9 +467,9 @@ CREATE TABLE VENTA(
 	*/
 
 	-- Atributos de la tabla: 
-	NUM_OPERACION  		NUMERIC(6,0) 	NOT NULL,	--
-	ID_NUMERO_FACTURA 	NUMERIC(6,0) 	NOT NULL, 	-- es foranea
-	ID_RIF_EMPRESA  	VARCHAR(12)		NOT NULL 	-- es foranea (VAN JUNTAS LAS DOS ULTIMAS)
+	NUM_OPERACION  		NUMERIC(6,0) 	NOT NULL,	-- Numero de la venta
+	ID_NUMERO_FACTURA 	NUMERIC(6,0) 	NOT NULL, 	-- ID de la factura.
+	ID_RIF_EMPRESA  	VARCHAR(12)		NOT NULL 	-- rif de la empresa que emite la venta.
 
 );
 
@@ -472,8 +483,8 @@ CREATE TABLE ESDEPENDIENTE(
 	*/
 
 	-- Atributos de la tabla: 
-	POSTIZA_DEPENDIENTE  	NUMERIC(8,0)	NOT NULL,	--
-	CI_EMPLEADO  			NUMERIC(8,0) 	NOT NULL	--
+	POSTIZA_DEPENDIENTE  	NUMERIC(8,0)	NOT NULL,	-- Clave postiza del dependiente
+	CI_EMPLEADO  			NUMERIC(8,0) 	NOT NULL	-- Ci del empleado
 
 );
 
@@ -485,9 +496,9 @@ CREATE TABLE PIDE(
 	*/
 
 	-- Atributos de la tabla: 
-	MARCA_PRODUCTO 		VARCHAR(20) 		NOT NULL,  	-- es foranea
-	MODELO_PRODUCTO  	VARCHAR(20) 		NOT NULL, 	-- es foranea (VAN JUNTAS A PRODUCTO)
-	CI_CLIENTE   		NUMERIC(8,0) 		NOT NULL
+	MARCA_PRODUCTO 		VARCHAR(20) 		NOT NULL,  	-- Marca del producto.
+	MODELO_PRODUCTO  	VARCHAR(20) 		NOT NULL, 	-- Modelo del producto.
+	CI_CLIENTE   		NUMERIC(8,0) 		NOT NULL	-- Ci del cliente.
 
 );
 
@@ -499,9 +510,9 @@ CREATE TABLE SOLICITA(
 	*/
 
 	-- Atributos de la tabla: 
-	NUM_ORDEN			NUMERIC(6,0)	NOT NULL, 	-- tambien es foranea?
-	MARCA_PRODUCTO  	VARCHAR(20)  	NOT NULL, 	-- es foranea
-	MODELO_PRODUCTO  	VARCHAR(20)		NOT NULL 	-- es foranea (VAN JUNTAS A PRODUCTO)
+	NUM_ORDEN			NUMERIC(6,0)	NOT NULL, 	-- Numero de orden.
+	MARCA_PRODUCTO  	VARCHAR(20)  	NOT NULL, 	-- Marca del producto.
+	MODELO_PRODUCTO  	VARCHAR(20)		NOT NULL 	-- Modelo del producto.
 
 );
 
@@ -513,9 +524,9 @@ CREATE TABLE TIENDAEFECTUA(
 	*/
 
 	-- Atributos de la tabla: 
-	NUM_OPERACION 					NUMERIC(6,0) NOT NULL, 	--	
-	NUM_INVENTARIO_EJEMPLAR_1 		NUMERIC(6,0) NOT NULL,	--
-	NUM_INVENTARIO_EJEMPLAR_2 		NUMERIC(6,0) NOT NULL	--
+	NUM_OPERACION 					NUMERIC(6,0) NOT NULL, 	-- Numero de operacion
+	NUM_INVENTARIO_EJEMPLAR_1 		NUMERIC(6,0) NOT NULL,	-- Numero de inventario del producto1
+	NUM_INVENTARIO_EJEMPLAR_2 		NUMERIC(6,0) NOT NULL	-- Numero de inventario del producto1
 
 
 );
@@ -528,8 +539,8 @@ CREATE TABLE TIENDAEJECUTA(
 	*/
 
 	-- Atributos de la tabla: 
-	NUM_OPERACION 				NUMERIC(6,0) NOT NULL,	--
-	NUM_INVENTARIO_EJEMPLAR 	NUMERIC(6,0) NOT NULL	--
+	NUM_OPERACION 				NUMERIC(6,0) NOT NULL,	-- Numero de operacion
+	NUM_INVENTARIO_EJEMPLAR 	NUMERIC(6,0) NOT NULL	-- Numero de inventario del ejemplar
 
 );
 
@@ -541,8 +552,8 @@ CREATE TABLE TIENDAPAGA(
 	*/
 
 	-- Atributos de la tabla: 
-	POSTIZA_PAGO 		NUMERIC(6,0) 	NOT NULL,	--
-	RIF_PROVEEDOR 		VARCHAR(12)		NOT NULL	--
+	POSTIZA_PAGO 		NUMERIC(6,0) 	NOT NULL,	-- Clave postiza de pago.
+	RIF_PROVEEDOR 		VARCHAR(12)		NOT NULL	-- Rif del proveedor.
 
 );
 
@@ -554,8 +565,8 @@ CREATE TABLE TIENDAREALIZA(
 	*/
 
 	-- Atributos de la tabla: 	
-	NUM_OPERACION  		NUMERIC(6,0) NOT NULL,	--
-	NUM_INVENTARIO 		NUMERIC(6,0) NOT NULL	--
+	NUM_OPERACION  		NUMERIC(6,0) NOT NULL,	-- Numero de operacion
+	NUM_INVENTARIO 		NUMERIC(6,0) NOT NULL	-- Numero de inventario
 
 );
 
