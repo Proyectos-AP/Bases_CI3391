@@ -63,7 +63,7 @@ CREATE TABLE CLIENTE(
 	*/
 
 	-- Atributos de la tabla: 
-	CEDULA 			NUMERIC(8,0)	NOT NULL, -- Cedula de los clientes.
+	CEDULA_IDENT	NUMERIC(8,0)	NOT NULL, -- Cedula de los clientes.
 	DIRECCION		VARCHAR(50)		NOT NULL, -- Direccion de los clientes.
 	EMAIL			VARCHAR(20)		NOT NULL  -- Email del cliente.
 
@@ -78,8 +78,8 @@ CREATE TABLE NOMBRESCLIENTE(
 	*/
 
 	-- Atributos de la tabla: 
-	CEDULA_CLIENTE 	NUMERIC(8,0) NOT NULL   -- Cedula del cliente.
-	NOMBRE 			VARCHAR(20)				-- Nombre del cliente.
+	CEDULA_CLIENTE 	NUMERIC(8,0) NOT NULL,   -- Cedula del cliente.
+	NOMBRE 			VARCHAR(20)	 NOT NULL	 -- Nombre del cliente.
 );
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -91,8 +91,8 @@ CREATE TABLE APELLIDOSCLIENTE(
 	*/
 
 	-- Atributos de la tabla: 
-	CEDULA_CLIENTE  NUMERIC(8,0) NOT NULL   -- Cedula del cliente.
-	APELLIDO 		VARCHAR(20) 			-- Apellidos del cliente.
+	CEDULA_CLIENTE  NUMERIC(8,0) NOT NULL,   -- Cedula del cliente.
+	APELLIDO 		VARCHAR(20)  NOT NULL    -- Apellidos del cliente.
 );
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -228,7 +228,7 @@ CREATE TABLE APELLIDOSEMPLEADO(
 
 ------------------------------------------------------------------------------------------------------------------------
 
-CREATE TABLE TELEFONOSEMPLEADOS(
+CREATE TABLE TELEFONOSEMPLEADO(
 	/* Descripcion de la tabla: 
 		- Telefono de un empleado.
 		- Atributo MULTIVALUADO de EMPLEADO.
@@ -251,8 +251,8 @@ CREATE TABLE FACTURA(
 
 	-- Atributos de la tabla: 
 	ID_NUMERO_FACTURA	NUMERIC(6,0) 	NOT NULL,	-- Numero de la factura
-	ID_RIF_EMPRESA		VARCHAR(12)		NOT NULL	-- Rif de la empresa que emite la factura
-	NUM_TARJETA			NUMERIC(16,0)			    -- Numero de la tarjeta 
+	ID_RIF_EMPRESA		VARCHAR(12)		NOT NULL,	-- Rif de la empresa que emite la factura
+	NUM_TARJETA			NUMERIC(16,0),			    -- Numero de la tarjeta 
 													-- (en caso que de pague con tarjeta).
 	CLAVE_CONF			NUMERIC(6,0)				-- Clave de confirmacion de la tarjet
 													-- (en caso que de pague con tarjeta).
@@ -418,8 +418,8 @@ CREATE TABLE RECIBO (
 	*/
 
 	-- Atributos de la tabla: 
-	NUM_RECIBO 		NUMERIC(6,0)	NOT NULL	-- Numero del recibo.
-	NUM_TARJETA		NUMERIC(16,0)				-- Numero de la tarjet de un cliente
+	NUM_RECIBO 		NUMERIC(6,0)	NOT NULL,	-- Numero del recibo.
+	NUM_TARJETA		NUMERIC(16,0),				-- Numero de la tarjet de un cliente
 												-- en caso que se pague con tarjeta.
 												
 	CLAVE_CONF 		NUMERIC(6,0)				-- Clave de confirmacion de la operacion
