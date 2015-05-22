@@ -358,7 +358,9 @@ ALTER TABLE PRODUCTOUSADO
 ------------------------------------------------------------------------------------------------------------------------
 
 ALTER TABLE VENTA
-	ADD CONSTRAINT FK_VENTA_OPERACION FOREIGN KEY (NUM_OPERACION) REFERENCES OPERACION(NUM_OPERACION)
+	ADD CONSTRAINT FK_VENTA_OPERACION FOREIGN KEY (NUM_OPERACION) REFERENCES OPERACION(NUM_OPERACION),
+	ADD CONSTRAINT FK_VENTA_FACTURA 
+		FOREIGN KEY (ID_NUMERO_FACTURA,ID_RIF_EMPRESA) REFERENCES FACTURA(ID_NUMERO_FACTURA,ID_RIF_EMPRESA)
 ;
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -566,6 +568,13 @@ ALTER TABLE PERSONALADMINISTRATIVO
 
 ------------------------------------------------------------------------------------------------------------------------
 
+ALTER TABLE PRIMA
+	ADD CONSTRAINT DOM_PRIMA_RANGO_ETARIO CHECK (RANGO_ETARIO IN ('JOVENES','ADULTOS','MAYORES')),
+	ADD CONSTRAINT DOM_PRIMA_SEXO CHECK (SEXO IN ('M','F'))	
+;
+
+------------------------------------------------------------------------------------------------------------------------
+
 ALTER TABLE PRODUCTO
 	ADD CONSTRAINT DOM_PRODUCTO_ANHO_ELABORACION CHECK (ANHO_ELABORACION > 1800),		
 	ADD CONSTRAINT DOM_PRODUCTO_CATEGORIA CHECK	(CATEGORIA IN ('LINEA_BLANCA','LINEA_MARRON','DECORACION')),
@@ -585,13 +594,6 @@ ALTER TABLE PRODUCTONUEVO
 ALTER TABLE PRODUCTOUSADO
 	ADD CONSTRAINT DOM_PRODUCTOUSADO_NUM_INVENTARIO CHECK (NUM_INVENTARIO > 0)
 ;
-
-------------------------------------------------------------------------------------------------------------------------
-
---ALTER TABLE PROVEEDOR
-	-- FALTAN AGREGAR RESTRICCIONES Y EN LAS DEMAS LO DEL RIFF! 
-
---;
 
 ------------------------------------------------------------------------------------------------------------------------
 
